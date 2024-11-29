@@ -1,34 +1,38 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { Boxes } from "@/components/ui/background-boxes";
-import HeaderNav from "@/components/NavBar/HeaderNav";
-import { cn } from "@/lib/utils";
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
+import { ThemeProvider } from '@/components/ThemeProvider'
+import { Navigation } from '@/components/navigation'
+import { ScrollToTop } from '@/components/scroll-to-top'
 
-
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Abdullah Shaikh",
-  description: "My Portfolio website, see my project, skills, tech stack, for freelance work send a message.",
-};
+  title: 'Shaikh Abdullah - Full Stack AI/ML Developer',
+  description: 'Portfolio of Shaikh Abdullah, showcasing expertise in web development, machine learning, and innovative projects.',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        {" "}
-        <div className="min-h-screen relative w-full overflow-hidden bg-slate-900 text-white flex flex-col rounded-lg">
-          <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
-          <HeaderNav />
-          {children}
-          <Boxes />
-        </div>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} relative`}>
+        <div className="fixed inset-0 -z-10 animate-gradient bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 background-animate"></div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navigation />
+          <main className="relative z-10">{children}</main>
+          <ScrollToTop />
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
+
