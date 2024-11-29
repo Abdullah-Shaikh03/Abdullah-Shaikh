@@ -1,5 +1,5 @@
 "use client"
-
+import Link from 'next/link'
 import React, { useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -105,10 +105,8 @@ export default function Home() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <Button onClick={()=>{
-            window.location.href = 'https://github.com/Abdullah-Shaikh-03'
-          }} size="lg" className="text-base sm:text-lg px-6 sm:px-8">
-            Explore My Work
+          <Button size="lg" className="text-base sm:text-lg px-6 sm:px-8">
+            <Link href={'#projects'}>Explore My Work</Link>
           </Button>
         </motion.div>
         <motion.div 
@@ -140,15 +138,17 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-4">
             <Button variant="outline" size="lg" className="gap-2">
               <Github className="w-5 h-5" />
-              GitHub
+              <Link href='https://github.com/Abdullah-Shaikh03'>GitHub</Link>
             </Button>
             <Button variant="outline" size="lg" className="gap-2">
               <Linkedin className="w-5 h-5" />
+              <Link href={'https://www.linkedin.com/in/abdullah-shaikh-8984b9204/'}>
               LinkedIn
+              </Link>
             </Button>
             <Button variant="outline" size="lg" className="gap-2">
               <Mail className="w-5 h-5" />
-              Email
+              <Link href={'#contact'}>Email</Link>
             </Button>
           </div>
         </motion.div>
