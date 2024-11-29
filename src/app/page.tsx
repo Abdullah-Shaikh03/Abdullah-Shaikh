@@ -105,7 +105,9 @@ export default function Home() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <Button size="lg" className="text-base sm:text-lg px-6 sm:px-8">
+          <Button onClick={()=>{
+            window.location.href = 'https://github.com/Abdullah-Shaikh-03'
+          }} size="lg" className="text-base sm:text-lg px-6 sm:px-8">
             Explore My Work
           </Button>
         </motion.div>
@@ -355,7 +357,7 @@ const projects: Project[] = [
   {
     title: "Skin Disease Analysis",
     description: "Deep Neural Network model to analyze and predict 400+ skin diseases from photographs.",
-    technologies: ["Python", "TensorFlow", "DenseNet201", "CNN"],
+    technologies: ["Python", "PyTorch", "GoogleNet", "CNN"],
     link: "https://github.com/Abdullah-Shaikh03/Skin_Disease_Detector-"
   },
   {
@@ -367,7 +369,7 @@ const projects: Project[] = [
   {
     title: "Emotion Detection",
     description: "RNN-based system capable of detecting 7 different emotional states from audio input.",
-    technologies: ["Python", "Keras", "RNN", "Audio Processing"],
+    technologies: ["Python", "PyTorch", "RNN", "Audio Processing"],
     link: "https://github.com/Abdullah-Shaikh03/EmotionDetection-RNN"
   }
 ]
