@@ -131,8 +131,8 @@ export default function Home() {
         >
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">About Me</h2>
           <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8">
-            I'm a passionate Full Stack Developer with a strong focus on AI and Machine Learning. 
-            Currently pursuing my Bachelor's in Computer Science and Engineering, I've developed 
+            I&apos;m a passionate Full Stack Developer with a strong focus on AI and Machine Learning. 
+            Currently pursuing my Bachelor&apos;s in Computer Science and Engineering, I&apos;ve developed 
             a diverse skill set that allows me to create innovative solutions across various domains.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -224,7 +224,7 @@ export default function Home() {
           <Card>
             <CardHeader>
               <CardTitle>Send me a message</CardTitle>
-              <CardDescription>I'll get back to you as soon as possible.</CardDescription>
+              <CardDescription>I&apos;ll get back to you as soon as possible.</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
