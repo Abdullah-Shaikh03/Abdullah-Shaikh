@@ -350,24 +350,24 @@ const projects: Project[] = [
     title: "RESHALA",
     description: "A C2C platform for exchanging used academic books and accessories.",
     technologies: ["HTML5", "CSS", "Bootstrap5", "NodeJS", "MySQL", "JavaScript"],
-    link: "https://github.com/yourusername/reshala"
+    link: "https://github.com/Abdullah-Shaikh03/RESHALA-Beta-Project"
   },
   {
     title: "Skin Disease Analysis",
     description: "Deep Neural Network model to analyze and predict 400+ skin diseases from photographs.",
     technologies: ["Python", "TensorFlow", "DenseNet201", "CNN"],
-    link: "https://github.com/yourusername/skin-disease-analysis"
+    link: "https://github.com/Abdullah-Shaikh03/Skin_Disease_Detector-"
   },
   {
     title: "Glaucoma Detection",
     description: "Research project achieving 97.5% accuracy in glaucoma detection using custom CNN architecture.",
     technologies: ["Python", "PyTorch", "CNN", "VGG"],
-    link: "https://github.com/yourusername/glaucoma-detection"
+    link: "https://github.com/Abdullah-Shaikh03/GlaucomaDetection"
   },
   {
     title: "Emotion Detection",
     description: "RNN-based system capable of detecting 7 different emotional states from audio input.",
     technologies: ["Python", "Keras", "RNN", "Audio Processing"],
-    link: "https://github.com/yourusername/emotion-detection"
+    link: "https://github.com/Abdullah-Shaikh03/EmotionDetection-RNN"
   }
 ]
