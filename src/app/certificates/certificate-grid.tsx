@@ -55,6 +55,7 @@ export function CertificateGrid({ certificates }: CertificateGridProps) {
                     src={cert.url}
                     alt={cert.key.split('/').pop()?.replace(/\.[^/.]+$/, '') || 'Certificate'}
                     fill
+unoptimized
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
