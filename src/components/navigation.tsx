@@ -12,8 +12,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useSession, signIn, signOut } from "next-auth/react"
 
 export function Navigation() {
+  const { data: session } = useSession()
   const { setTheme } = useTheme()
   const [isScrolled, setIsScrolled] = React.useState(false)
 
@@ -31,7 +33,7 @@ export function Navigation() {
     }`}>
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="text-2xl px-16 font-bold">SA</span>
+          <span className="text-2xl font-bold">SA</span>
         </Link>
         <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-6 text-sm font-medium">
           <Link href="#about" className="transition-colors hover:text-primary">About</Link>
@@ -39,6 +41,9 @@ export function Navigation() {
           <Link href="#projects" className="transition-colors hover:text-primary">Projects</Link>
           <Link href="/certificates" className="transition-colors hover:text-primary">Certificates</Link>
           <Link href="#contact" className="transition-colors hover:text-primary">Contact</Link>
+          {session && (
+            <Link href="/blog" className="transition-colors hover:text-primary">Blog</Link>
+          )}
         </nav>
         <div className="flex items-center space-x-2">
           <DropdownMenu>
@@ -55,6 +60,11 @@ export function Navigation() {
               <DropdownMenuItem onClick={() => setTheme("system")}>System</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+          {session ? (
+            <Button variant="outline" onClick={() => signOut()}>Sign out</Button>
+          ) : (
+            <Button variant="outline" onClick={() => signIn()}>Sign in</Button>
+          )}
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
@@ -68,6 +78,9 @@ export function Navigation() {
                 <Link href="#projects" className="text-lg font-medium">Projects</Link>
                 <Link href="/certificates" className="text-lg font-medium">Certificates</Link>
                 <Link href="#contact" className="text-lg font-medium">Contact</Link>
+                {session && (
+                  <Link href="/blog" className="text-lg font-medium">Blog</Link>
+                )}
               </nav>
             </SheetContent>
           </Sheet>
@@ -76,4 +89,3 @@ export function Navigation() {
     </header>
   )
 }
-
