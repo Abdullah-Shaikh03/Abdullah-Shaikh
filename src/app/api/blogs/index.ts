@@ -2,6 +2,9 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { getSession } from 'next-auth/react'
 import mongoose from 'mongoose'
 import Blog from '@/models/Blog'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const session = await getSession({ req })

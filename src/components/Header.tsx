@@ -30,6 +30,7 @@ const Header = () => {
             <Link href="#skills" className="text-sm font-medium transition-colors hover:text-primary">
               Skills
             </Link>
+            <Link href={'blog'}></Link>
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="p-2 rounded-md hover:bg-accent"

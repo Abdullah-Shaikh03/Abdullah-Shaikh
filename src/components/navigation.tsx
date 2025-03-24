@@ -77,6 +77,7 @@ export function Navigation() {
                 <Link href="#skills" className="text-lg font-medium">Skills</Link>
                 <Link href="#projects" className="text-lg font-medium">Projects</Link>
                 <Link href="/certificates" className="text-lg font-medium">Certificates</Link>
+                <Link href={'/blog'} className="text-lg font-medium">Blog</Link>
                 <Link href="#contact" className="text-lg font-medium">Contact</Link>
                 {session && (
                   <Link href="/blog" className="text-lg font-medium">Blog</Link>

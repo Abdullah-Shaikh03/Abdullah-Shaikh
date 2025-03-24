@@ -1,13 +1,13 @@
 "use client"
-import Link from 'next/link'
-import React, { useState } from "react"
+
+import React from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Code2, Database, Brain, Github, Linkedin, Mail, ExternalLink } from 'lucide-react'
+import { Code2, Database, Brain, Github, Linkedin, Mail, ExternalLink, Download } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
 import { toast } from "@/hooks/use-toast"
@@ -30,14 +30,14 @@ export default function Home() {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8])
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = React.useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   })
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = React.useState(false)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -77,6 +77,10 @@ export default function Home() {
     }
   }
 
+  const handleDownloadResume = () => {
+    window.open('/api/download-resume', '_blank')
+  }
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -104,9 +108,13 @@ export default function Home() {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex gap-4"
         >
           <Button size="lg" className="text-base sm:text-lg px-6 sm:px-8">
-            <Link href={'#projects'}>Explore My Work</Link>
+            Explore My Work
+          </Button>
+          <Button size="lg" variant="outline" className="text-base sm:text-lg px-6 sm:px-8" onClick={handleDownloadResume}>
+            <Download className="mr-2 h-4 w-4" /> Download Resume
           </Button>
         </motion.div>
         <motion.div 
@@ -131,24 +139,22 @@ export default function Home() {
         >
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">About Me</h2>
           <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8">
-            I&apos;m a passionate Full Stack Developer with a strong focus on AI and Machine Learning. 
-            Currently pursuing my Bachelor&apos;s in Computer Science and Engineering, I&apos;ve developed 
+            I'm a passionate Full Stack Developer with a strong focus on AI and Machine Learning. 
+            Currently pursuing my Bachelor's in Computer Science and Engineering, I've developed 
             a diverse skill set that allows me to create innovative solutions across various domains.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button variant="outline" size="lg" className="gap-2">
               <Github className="w-5 h-5" />
-              <Link href='https://github.com/Abdullah-Shaikh03'>GitHub</Link>
+              GitHub
             </Button>
             <Button variant="outline" size="lg" className="gap-2">
               <Linkedin className="w-5 h-5" />
-              <Link href={'https://www.linkedin.com/in/abdullah-shaikh-8984b9204/'}>
               LinkedIn
-              </Link>
             </Button>
             <Button variant="outline" size="lg" className="gap-2">
               <Mail className="w-5 h-5" />
-              <Link href={'#contact'}>Email</Link>
+              Email
             </Button>
           </div>
         </motion.div>
@@ -226,7 +232,7 @@ export default function Home() {
           <Card>
             <CardHeader>
               <CardTitle>Send me a message</CardTitle>
-              <CardDescription>I&apos;ll get back to you as soon as possible.</CardDescription>
+              <CardDescription>I'll get back to you as soon as possible.</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -352,24 +358,25 @@ const projects: Project[] = [
     title: "RESHALA",
     description: "A C2C platform for exchanging used academic books and accessories.",
     technologies: ["HTML5", "CSS", "Bootstrap5", "NodeJS", "MySQL", "JavaScript"],
-    link: "https://github.com/Abdullah-Shaikh03/RESHALA-Beta-Project"
+    link: "https://github.com/yourusername/reshala"
   },
   {
     title: "Skin Disease Analysis",
     description: "Deep Neural Network model to analyze and predict 400+ skin diseases from photographs.",
-    technologies: ["Python", "PyTorch", "GoogleNet", "CNN"],
-    link: "https://github.com/Abdullah-Shaikh03/Skin_Disease_Detector-"
+    technologies: ["Python", "TensorFlow", "DenseNet201", "CNN"],
+    link: "https://github.com/yourusername/skin-disease-analysis"
   },
   {
     title: "Glaucoma Detection",
     description: "Research project achieving 97.5% accuracy in glaucoma detection using custom CNN architecture.",
     technologies: ["Python", "PyTorch", "CNN", "VGG"],
-    link: "https://github.com/Abdullah-Shaikh03/GlaucomaDetection"
+    link: "https://github.com/yourusername/glaucoma-detection"
   },
   {
     title: "Emotion Detection",
     description: "RNN-based system capable of detecting 7 different emotional states from audio input.",
-    technologies: ["Python", "PyTorch", "RNN", "Audio Processing"],
-    link: "https://github.com/Abdullah-Shaikh03/EmotionDetection-RNN"
+    technologies: ["Python", "Keras", "RNN", "Audio Processing"],
+    link: "https://github.com/yourusername/emotion-detection"
   }
 ]
+
