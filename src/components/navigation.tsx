@@ -38,7 +38,7 @@ export function Navigation() {
           <Link href="#skills" className="transition-colors hover:text-primary">Skills</Link>
           <Link href="#projects" className="transition-colors hover:text-primary">Projects</Link>
           <Link href="/certificates" className="transition-colors hover:text-primary">Certificates</Link>
-          <Link href="#contact" className="transition-colors hover:text-primary">Contact</Link>
+          <Link href="/contact" className="transition-colors hover:text-primary">Contact</Link>
         </nav>
         <div className="flex items-center space-x-2">
           <DropdownMenu>
