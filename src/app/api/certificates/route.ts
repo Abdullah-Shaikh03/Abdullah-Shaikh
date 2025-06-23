@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
       name,
       description,
       dateOfAcquisition: new Date(dateOfAcquisition),
-      imageUrl, // Note: using imageURL to match your schema
+      imgUrl: imageUrl, // Note: using imgUrl to match your schema
     }
 
     console.log("Creating certificate:", certificateData)

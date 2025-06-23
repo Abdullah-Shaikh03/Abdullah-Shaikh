@@ -1,26 +1,32 @@
-import { Suspense } from "react"
-import type { Certificate } from "@/types/certificate"
-import { CertificateCard } from "@/components/certificate-card"
-import { CertificatesSkeleton } from "@/components/certificates-skeleton"
+export const dynamic = "force-dynamic";
+
+import { Suspense } from "react";
+import type { Certificate } from "@/types/certificate";
+import { CertificateCard } from "@/components/certificate-card";
+import { CertificatesSkeleton } from "@/components/certificates-skeleton";
 
 async function getCertificates(): Promise<Certificate[]> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
     const response = await fetch(`${baseUrl}/api/certificates`, {
       cache: "no-store",
       next: { revalidate: 0 },
-    })
+    });
 
     if (!response.ok) {
-      console.error("Failed to fetch certificates:", response.status, response.statusText)
-      return []
+      console.error(
+        "Failed to fetch certificates:",
+        response.status,
+        response.statusText
+      );
+      return [];
     }
 
-    const data = await response.json()
-    return Array.isArray(data) ? data : []
+    const data = await response.json();
+    return Array.isArray(data) ? data : [];
   } catch (error) {
-    console.error("Error fetching certificates:", error)
-    return []
+    console.error("Error fetching certificates:", error);
+    return [];
   }
 }
 
@@ -28,7 +34,12 @@ function EmptyState() {
   return (
     <div className="text-center py-16">
       <div className="text-muted-foreground mb-6">
-        <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          className="w-16 h-16 mx-auto"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -37,37 +48,47 @@ function EmptyState() {
           />
         </svg>
       </div>
-      <h3 className="text-xl font-semibold text-foreground mb-2">No Certificates Yet</h3>
-      <p className="text-muted-foreground">Certificates will appear here once they are uploaded.</p>
+      <h3 className="text-xl font-semibold text-foreground mb-2">
+        No Certificates Yet
+      </h3>
+      <p className="text-muted-foreground">
+        Certificates will appear here once they are uploaded.
+      </p>
     </div>
-  )
+  );
 }
 
 async function CertificatesContent() {
-  const certificates = await getCertificates()
+  const certificates = await getCertificates();
 
   if (certificates.length === 0) {
-    return <EmptyState />
+    return <EmptyState />;
   }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {certificates.map((certificate, index) => (
-        <CertificateCard key={certificate._id} certificate={certificate} index={index} />
+        <CertificateCard
+          key={certificate._id}
+          certificate={certificate}
+          index={index}
+        />
       ))}
     </div>
-  )
+  );
 }
 
 export default function CertificatesPage() {
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12 space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">My Certifications</h1>
-          <p className="text-lg ">
-            A collection of my professional certifications and achievements that showcase my expertise and commitment to
-            continuous learning.
+          <h1 className="text-4xl md:text-5xl font-bold text-accent-foreground tracking-tight">
+            My Certifications
+          </h1>
+          <p className="text-lg text-foreground max-w-2xl mx-auto leading-relaxed">
+            A collection of my professional certifications and achievements that
+            showcase my expertise and commitment to continuous learning.
           </p>
         </div>
 
@@ -76,5 +97,5 @@ export default function CertificatesPage() {
         </Suspense>
       </div>
     </div>
-  )
+  );
 }
