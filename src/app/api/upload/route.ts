@@ -61,7 +61,6 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ url, fields, key });
   } catch (error) {
-    console.error("S3 upload error:", error);
     return NextResponse.json(
       {
         error: "Failed to create upload URL",

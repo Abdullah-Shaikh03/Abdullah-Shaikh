@@ -1,10 +1,10 @@
 export const dynamic = "force-dynamic";
-
+import Link from "next/link";
 import { Suspense } from "react";
 import type { Certificate } from "@/types/certificate";
 import { CertificateCard } from "@/components/certificate-card";
 import { CertificatesSkeleton } from "@/components/certificates-skeleton";
-
+import { Button } from "@/components/ui/button";
 async function getCertificates(): Promise<Certificate[]> {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
@@ -90,6 +90,13 @@ export default function CertificatesPage() {
             A collection of my professional certifications and achievements that
             showcase my expertise and commitment to continuous learning.
           </p>
+          <div
+            className={process.env.NODE_ENV === "development" ? "" : "hidden"}
+          >
+            <Link href="/upload">
+              <Button>Upload</Button>
+            </Link>
+          </div>
         </div>
 
         <Suspense fallback={<CertificatesSkeleton />}>

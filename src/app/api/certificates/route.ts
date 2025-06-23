@@ -4,13 +4,10 @@ import Certificate from "@/lib/certificateModel"
 
 export async function GET() {
   try {
-    console.log("Connecting to MongoDB...")
     await dbConnect()
 
-    console.log("Fetching certificates from MongoDB...")
     const certificates = await Certificate.find({}).sort({ dateOfAcquisition: -1 }).lean().exec()
 
-    console.log(`Found ${certificates.length} certificates`)
 
     // Ensure we return a proper JSON response
     return NextResponse.json(certificates, {
@@ -20,7 +17,6 @@ export async function GET() {
       },
     })
   } catch (error) {
-    console.error("Database error in GET:", error)
     return NextResponse.json(
       {
         error: "Failed to fetch certificates",
@@ -38,21 +34,13 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    console.log("Starting certificate creation...")
 
     const body = await request.json()
-    console.log("Request body:", body)
 
     const { name, description, dateOfAcquisition, imageUrl } = body
 
     // Validate required fields
     if (!name || !description || !dateOfAcquisition || !imageUrl) {
-      console.error("Missing required fields:", {
-        name: !!name,
-        description: !!description,
-        dateOfAcquisition: !!dateOfAcquisition,
-        imageUrl: !!imageUrl,
-      })
       return NextResponse.json(
         { error: "Missing required fields" },
         {
@@ -64,20 +52,17 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    console.log("Connecting to MongoDB...")
     await dbConnect()
 
     const certificateData = {
       name,
       description,
       dateOfAcquisition: new Date(dateOfAcquisition),
-      imgUrl: imageUrl, // Note: using imgUrl to match your schema
+      imageUrl: imageUrl, // Note: using imageUrl to match your schema
     }
 
-    console.log("Creating certificate:", certificateData)
     const certificate = new Certificate(certificateData)
     const result = await certificate.save()
-    console.log("Certificate saved:", result)
 
     return NextResponse.json(
       {
@@ -93,7 +78,6 @@ export async function POST(request: NextRequest) {
       },
     )
   } catch (error) {
-    console.error("Database error in POST:", error)
 
     // Handle specific MongoDB/Mongoose errors
     if (error instanceof Error) {
