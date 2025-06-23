@@ -63,7 +63,7 @@ const ContactPage = () => {
   return (
     <section
       id="contact"
-      className="py-16 sm:py-20 px-4 bg-muted/80 backdrop-blur-md"
+      className="py-16 sm:py-20 px-4"
     >
       <div className="max-w-3xl mx-auto">
         <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">

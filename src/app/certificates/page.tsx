@@ -61,11 +61,11 @@ async function CertificatesContent() {
 
 export default function CertificatesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-muted/40">
+    <div className="min-h-screen ">
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">My Certifications</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg ">
             A collection of my professional certifications and achievements that showcase my expertise and commitment to
             continuous learning.
           </p>

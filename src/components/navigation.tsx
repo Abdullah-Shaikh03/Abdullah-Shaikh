@@ -34,9 +34,9 @@ export function Navigation() {
           <span className="text-2xl px-16 font-bold">SA</span>
         </Link>
         <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-6 text-sm font-medium">
-          <Link href="#about" className="transition-colors hover:text-primary">About</Link>
-          <Link href="#skills" className="transition-colors hover:text-primary">Skills</Link>
-          <Link href="#projects" className="transition-colors hover:text-primary">Projects</Link>
+          <Link href="/#about" className="transition-colors hover:text-primary">About</Link>
+          <Link href="/#skills" className="transition-colors hover:text-primary">Skills</Link>
+          <Link href="/#projects" className="transition-colors hover:text-primary">Projects</Link>
           <Link href="/certificates" className="transition-colors hover:text-primary">Certificates</Link>
           <Link href="/contact" className="transition-colors hover:text-primary">Contact</Link>
         </nav>
@@ -61,13 +61,13 @@ export function Navigation() {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] px-2">
               <nav className="flex flex-col space-y-4">
-                <Link href="#about" className="text-lg font-medium">About</Link>
-                <Link href="#skills" className="text-lg font-medium">Skills</Link>
-                <Link href="#projects" className="text-lg font-medium">Projects</Link>
+                <Link href="/#about" className="text-lg font-medium">About</Link>
+                <Link href="/#skills" className="text-lg font-medium">Skills</Link>
+                <Link href="/#projects" className="text-lg font-medium">Projects</Link>
                 <Link href="/certificates" className="text-lg font-medium">Certificates</Link>
-                <Link href="#contact" className="text-lg font-medium">Contact</Link>
+                <Link href="/contact" className="text-lg font-medium">Contact</Link>
               </nav>
             </SheetContent>
           </Sheet>

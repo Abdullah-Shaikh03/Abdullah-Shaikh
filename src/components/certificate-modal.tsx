@@ -1,31 +1,40 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import Image from "next/image"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Calendar, Award, ExternalLink } from "lucide-react"
+import { useState } from "react";
+import Image from "next/image";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Calendar, Award, ExternalLink } from "lucide-react";
 
 interface Certificate {
-  _id: string
-  name: string
-  description: string
-  dateOfAcquisition: string
-  imgUrl: string
-  createdAt: string
+  _id: string;
+  name: string;
+  description: string;
+  dateOfAcquisition: string;
+  imageUrl: string;
+  createdAt: string;
 }
 
 interface CertificateModalProps {
-  certificate: Certificate
-  children: React.ReactNode
+  certificate: Certificate;
+  children: React.ReactNode;
 }
 
-export function CertificateModal({ certificate, children }: CertificateModalProps) {
-  const [imageLoaded, setImageLoaded] = useState(false)
-  const [imageError, setImageError] = useState(false)
+export function CertificateModal({
+  certificate,
+  children,
+}: CertificateModalProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   const formatDate = (dateString: string) => {
     try {
@@ -33,28 +42,28 @@ export function CertificateModal({ certificate, children }: CertificateModalProp
         year: "numeric",
         month: "long",
         day: "numeric",
-      })
+      });
     } catch {
-      return "Invalid Date"
+      return "Invalid Date";
     }
-  }
+  };
 
   const handleImageLoad = () => {
-    setImageLoaded(true)
-  }
+    setImageLoaded(true);
+  };
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    console.error("Modal image failed to load:", certificate.imgUrl)
-    setImageError(true)
-    setImageLoaded(true)
-    e.currentTarget.src = "/file.svg?height=400&width=600"
-  }
+    console.error("Modal image failed to load:", certificate.imageUrl);
+    setImageError(true);
+    setImageLoaded(true);
+    e.currentTarget.src = "/file.svg?height=400&width=600";
+  };
 
   const handleOpenInNewTab = () => {
-    if (certificate.imgUrl) {
-      window.open(certificate.imgUrl, "_blank", "noopener,noreferrer")
+    if (certificate.imageUrl) {
+      window.open(certificate.imageUrl, "_blank", "noopener,noreferrer");
     }
-  }
+  };
 
   return (
     <Dialog>
@@ -63,13 +72,18 @@ export function CertificateModal({ certificate, children }: CertificateModalProp
         <DialogHeader className="space-y-3">
           <div className="flex items-start justify-between">
             <div className="flex-1 space-y-2">
-              <DialogTitle className="text-2xl font-bold text-card-foreground pr-8">{certificate.name}</DialogTitle>
+              <DialogTitle className="text-2xl font-bold text-card-foreground pr-8">
+                {certificate.name}
+              </DialogTitle>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <Calendar className="w-4 h-4" />
                   {formatDate(certificate.dateOfAcquisition)}
                 </div>
-                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                <Badge
+                  variant="secondary"
+                  className="bg-primary/10 text-primary border-primary/20"
+                >
                   <Award className="w-3 h-3 mr-1" />
                   Certificate
                 </Badge>
@@ -86,7 +100,12 @@ export function CertificateModal({ certificate, children }: CertificateModalProp
               {!imageLoaded && !imageError && (
                 <div className="absolute inset-0 bg-muted animate-pulse-subtle flex items-center justify-center">
                   <div className="text-muted-foreground">
-                    <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="w-12 h-12"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -99,7 +118,7 @@ export function CertificateModal({ certificate, children }: CertificateModalProp
               )}
 
               <Image
-                src={certificate.imgUrl || "/file.svg?height=400&width=600"}
+                src={certificate.imageUrl || "/file.svg?height=400&width=600"}
                 alt={certificate.name}
                 fill
                 className={`object-contain transition-opacity duration-300 ${
@@ -108,7 +127,9 @@ export function CertificateModal({ certificate, children }: CertificateModalProp
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 onLoad={handleImageLoad}
                 onError={handleImageError}
-                unoptimized={certificate.imgUrl?.includes("s3.") ? true : false}
+                unoptimized={true
+                  
+                }
               />
             </div>
 
@@ -125,24 +146,42 @@ export function CertificateModal({ certificate, children }: CertificateModalProp
           {/* Certificate Details */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-3">Description</h3>
-              <p className="text-muted-foreground leading-relaxed">{certificate.description}</p>
+              <h3 className="text-lg font-semibold text-foreground mb-3">
+                Description
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {certificate.description}
+              </p>
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">Certificate Details</h3>
+              <h3 className="text-lg font-semibold text-foreground">
+                Certificate Details
+              </h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center py-2 border-b border-border">
-                  <span className="text-sm font-medium text-muted-foreground">Date Acquired</span>
-                  <span className="text-sm text-foreground">{formatDate(certificate.dateOfAcquisition)}</span>
+                  <span className="text-sm font-medium text-muted-foreground">
+                    Date Acquired
+                  </span>
+                  <span className="text-sm text-foreground">
+                    {formatDate(certificate.dateOfAcquisition)}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-border">
-                  <span className="text-sm font-medium text-muted-foreground">Added to Portfolio</span>
-                  <span className="text-sm text-foreground">{formatDate(certificate.createdAt)}</span>
+                  <span className="text-sm font-medium text-muted-foreground">
+                    Added to Portfolio
+                  </span>
+                  <span className="text-sm text-foreground">
+                    {formatDate(certificate.createdAt)}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-sm font-medium text-muted-foreground">Certificate ID</span>
-                  <span className="text-sm text-foreground font-mono">{certificate._id.slice(-8)}</span>
+                  <span className="text-sm font-medium text-muted-foreground">
+                    Certificate ID
+                  </span>
+                  <span className="text-sm text-foreground font-mono">
+                    {certificate._id.slice(-8)}
+                  </span>
                 </div>
               </div>
             </div>
@@ -161,5 +200,5 @@ export function CertificateModal({ certificate, children }: CertificateModalProp
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
