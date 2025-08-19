@@ -34,6 +34,4 @@ const getCertificateById = async () => {
 };
 
 
-const 
-
 export { getCertificateById };
