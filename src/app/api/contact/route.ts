@@ -24,8 +24,6 @@ const {
     CONTACT_FROM_EMAIL,
     CONTACT_FROM_NAME,
     CONTACT_TO_EMAIL,
-    SITE_URL,
-    BRAND_NAME,
 } = process.env;
 
 function isEmail(str: string) {

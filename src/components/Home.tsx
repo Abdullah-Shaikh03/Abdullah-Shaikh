@@ -1,42 +1,18 @@
 "use client";
 import Link from "next/link";
-import React, { Suspense, useEffect } from "react";
+import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  Code2,
-  Database,
-  Brain,
   Github,
   Linkedin,
   Mail,
-  ExternalLink,
   ArrowDownNarrowWideIcon,
 } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { usePathname, useSearchParams } from "next/navigation";
 import About from "./about";
 
-interface Skill {
-  name: string;
-  icon: React.ReactNode;
-}
 
-interface Projects {
-  title: string;
-  description: string;
-  tags: string[];
-  githubLink?: string;
-}
+
 
 const Page = () => {
   const downloadResume = () => {

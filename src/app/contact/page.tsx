@@ -37,10 +37,15 @@ export default function Contact() {
 
     const target = e.currentTarget;
     const formData = {
-      name: (target.elements.namedItem("name") as HTMLInputElement)?.value || "",
-      email: (target.elements.namedItem("email") as HTMLInputElement)?.value || "",
-      subject: (target.elements.namedItem("subject") as HTMLInputElement)?.value || "",
-      message: (target.elements.namedItem("message") as HTMLTextAreaElement)?.value || "",
+      name:
+        (target.elements.namedItem("name") as HTMLInputElement)?.value || "",
+      email:
+        (target.elements.namedItem("email") as HTMLInputElement)?.value || "",
+      subject:
+        (target.elements.namedItem("subject") as HTMLInputElement)?.value || "",
+      message:
+        (target.elements.namedItem("message") as HTMLTextAreaElement)?.value ||
+        "",
     };
 
     setIsSubmitting(true);
@@ -61,7 +66,9 @@ export default function Contact() {
         target.reset(); // clear form after submit
       }
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      setError(
+        `Something went wrong. Please try again. ${err instanceof Error ? err.message : ""}`
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -77,7 +84,7 @@ export default function Contact() {
                 Get In Touch
               </h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Have a project in mind or want to discuss opportunities? I'd
+                Have a project in mind or want to discuss opportunities? I&apos;d
                 love to hear from you!
               </p>
             </div>
@@ -92,34 +99,71 @@ export default function Contact() {
                           <label htmlFor="name" className="text-sm font-medium">
                             Name
                           </label>
-                          <Input id="name" name="name" placeholder="Your name" required />
+                          <Input
+                            id="name"
+                            name="name"
+                            placeholder="Your name"
+                            required
+                          />
                         </div>
                         <div className="space-y-2">
-                          <label htmlFor="email" className="text-sm font-medium">
+                          <label
+                            htmlFor="email"
+                            className="text-sm font-medium"
+                          >
                             Email
                           </label>
-                          <Input id="email" name="email" type="email" placeholder="Your email" required />
+                          <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="Your email"
+                            required
+                          />
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <label htmlFor="subject" className="text-sm font-medium">
+                        <label
+                          htmlFor="subject"
+                          className="text-sm font-medium"
+                        >
                           Subject
                         </label>
-                        <Input id="subject" name="subject" placeholder="Subject of your message" required />
+                        <Input
+                          id="subject"
+                          name="subject"
+                          placeholder="Subject of your message"
+                          required
+                        />
                       </div>
                       <div className="space-y-2">
-                        <label htmlFor="message" className="text-sm font-medium">
+                        <label
+                          htmlFor="message"
+                          className="text-sm font-medium"
+                        >
                           Message
                         </label>
-                        <Textarea id="message" name="message" placeholder="Your message" className="min-h-[150px]" required />
+                        <Textarea
+                          id="message"
+                          name="message"
+                          placeholder="Your message"
+                          className="min-h-[150px]"
+                          required
+                        />
                       </div>
 
-                      <Button type="submit" className="w-full" disabled={isSubmitting}>
+                      <Button
+                        type="submit"
+                        className="w-full"
+                        disabled={isSubmitting}
+                      >
                         {isSubmitting ? "Sending..." : "Send Message"}
                       </Button>
 
                       {isSubmitted && (
-                        <p className="text-green-600 text-center mt-2">Message sent successfully!</p>
+                        <p className="text-green-600 text-center mt-2">
+                          Message sent successfully!
+                        </p>
                       )}
                       {error && (
                         <p className="text-red-600 text-center mt-2">{error}</p>
@@ -134,15 +178,23 @@ export default function Contact() {
                 {contactInfo.map((info, index) => (
                   <Card key={index} className="overflow-hidden">
                     <CardContent className="p-6 flex items-start gap-4">
-                      <div className="bg-primary/10 p-3 rounded-full mt-1">{info.icon}</div>
+                      <div className="bg-primary/10 p-3 rounded-full mt-1">
+                        {info.icon}
+                      </div>
                       <div>
                         <h3 className="font-medium">{info.title}</h3>
                         {info.link ? (
                           <a
                             href={info.link}
                             className="text-muted-foreground hover:text-primary transition-colors"
-                            target={info.title === "Location" ? "_blank" : undefined}
-                            rel={info.title === "Location" ? "noopener noreferrer" : undefined}
+                            target={
+                              info.title === "Location" ? "_blank" : undefined
+                            }
+                            rel={
+                              info.title === "Location"
+                                ? "noopener noreferrer"
+                                : undefined
+                            }
                           >
                             {info.value}
                           </a>

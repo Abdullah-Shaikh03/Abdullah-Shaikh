@@ -1,10 +1,12 @@
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { FaGithub } from "react-icons/fa";
 
 export default function Projects() {
   const projects = [
     {
-      name: "RESHAL (Resource Sharing Application for Learning)",
+      name: "ReShALA (Resource Sharing Application for Learning)",
       period: "2022 - 2023",
       tech: "React.js, Node.js, Express, MongoDB, AWS",
       achievements: [
@@ -12,10 +14,10 @@ export default function Projects() {
         "Implemented secure authentication and role-based access control",
         "Deployed on AWS with scalable backend architecture and cloud storage",
       ],
-      link: "",
+      link: "https://github.com/Abdullah-Shaikh03/RESHALA-Beta-Project",
     },
     {
-      name:"Hybrid Content-Collaborative based Music Recommendation System: Music.AI",
+      name: "Hybrid Content-Collaborative based Music Recommendation System: Music.AI",
       period: "June 2023 - December 2023",
       tech: "Python, Flask, Scikit-learn, Matplotlib, Seaborn, NLP",
       achievements: [
@@ -23,10 +25,10 @@ export default function Projects() {
         "Analyzed user preferences and song features to provide personalized recommendations",
         "Visualized data insights using Matplotlib and Seaborn for better understanding of user behavior",
       ],
-      link: "",
+      link: "https://github.com/Abdullah-Shaikh03/Music.AI",
     },
     {
-      name:"Movie Review Sentiment Analysis",
+      name: "Movie Review Sentiment Analysis",
       period: "Jan 2024 - May 2024",
       tech: "Python, NLTK, Scikit-learn, Flask",
       achievements: [
@@ -34,7 +36,7 @@ export default function Projects() {
         "Preprocessed text data using NLTK and extracted features for model training",
         "Deployed the model using Flask to provide real-time sentiment predictions",
       ],
-      link: "",
+      link: "https://github.com/bushra-07/movie-review-sentiment-analysis.git",
     },
     {
       name: "HybridNet: A Custom CNN model for Glaucoma Detection",
@@ -45,7 +47,7 @@ export default function Projects() {
         "Utilized advanced CNN architectures and transfer learning techniques",
         "Conducted extensive experimentation and hyperparameter tuning to optimize performance",
       ],
-      link: "",
+      link: "https://github.com/Abdullah-Shaikh03/GlaucomaDetection.git",
     },
     {
       name: "Video Assistant Referee (VAR) for Offside detection",
@@ -56,7 +58,7 @@ export default function Projects() {
         "Trained machine learning models for player detection and tracking using annotated video data",
         "Integrated real-time video processing with a user-friendly interface for match officials",
       ],
-      link: "",
+      link: "https://github.com/Abdullah-Shaikh03/VAR-Major-Project",
     },
     {
       name: "E-commerce Platform",
@@ -80,38 +82,57 @@ export default function Projects() {
               Projects
             </h2>
             <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Key academic, research, and personal projects I’ve worked on
+              A selection of my personal and professional projects
             </p>
           </div>
 
-          <div className="space-y-8 mt-12 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
             {projects.map((project, index) => (
-              <div
-                key={index}
-                className="timeline-item glass rounded-4xl hover:backdrop-blur-3xl hover:shadow-foreground hover:translate-x-4 hover:-translate-4 ease-in duration-300"
-              >
-                <Card className="border-l-4 border-l-primary transition-all duration-300 hover:shadow-lg rounded-3xl">
-                  <CardContent className="p-6">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold">{project.name}</h3>
-                        <p className="text-muted-foreground">{project.tech}</p>
-                      </div>
-                      <div className="mt-2 md:mt-0 flex flex-col md:items-end">
-                        <Badge variant="outline">{project.period}</Badge>
-                      </div>
-                    </div>
-                    <ul className="mt-4 space-y-2">
-                      {project.achievements.map((ach, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="mr-2 mt-1 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0"></span>
-                          <span className="text-sm text-muted-foreground">
-                            {ach}
+              <div key={index} className="glass rounded-2xl hover:backdrop-blur-3xl hover:shadow-foreground hover:translate-x-4 hover:-translate-4 ease-in duration-300">
+                <Card className="overflow-hidden h-full flex flex-col">
+                  <CardContent className="flex-1 flex flex-col p-5">
+                    {/* Name */}
+                    <h3 className="text-lg font-bold">{project.name}</h3>
+
+                    {/* Period */}
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {project.period}
+                    </p>
+
+                    {/* First achievement as description preview */}
+                    <p className="text-sm text-muted-foreground mt-2 flex-1">
+                      {project.achievements[0]}
+                    </p>
+
+                    {/* Tech tags */}
+                    <div className="project-tags mt-3 flex flex-wrap gap-2">
+                      {project.tech
+                        .split(",")
+                        .slice(0, 3)
+                        .map((tag, i) => (
+                          <span
+                            key={i}
+                            className="project-tag text-xs bg-muted px-2 py-1 rounded-md"
+                          >
+                            {tag.trim()}
                           </span>
-                        </li>
-                      ))}
-                    </ul>
-                    
+                        ))}
+                    </div>
+
+                    {/* Links */}
+                    <div className="project-links mt-4 flex gap-2">
+                      {project.link && (
+                        <Button size="sm" variant="outline" asChild>
+                          <Link
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FaGithub />
+                          </Link>
+                        </Button>
+                      )}
+                    </div>
                   </CardContent>
                 </Card>
               </div>
