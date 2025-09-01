@@ -4,9 +4,9 @@ import { Badge } from "@/components/ui/badge"
 export default function Education() {
   const education = [
     {
-      degree: "Bachelor of Engineering in Computer Engineering",
-      institution: "Dwarkadas J. Sanghvi College of Engineering",
-      period: "2020 - 2024",
+      degree: "Bachelor of Engineering in Computer Science and Engineering (AI & ML)",
+      institution: "M.H. Saboo Siddik College of Engineering, Mumbai",
+      period: "2021 - 2025",
       location: "Mumbai, India",
       achievements: [
         "Graduated with strong academic performance and hands-on project experience",
@@ -15,9 +15,9 @@ export default function Education() {
       ],
     },
     {
-      degree: "Higher Secondary Certificate (HSC) in Science",
-      institution: "Mithibai College of Arts, Chauhan Institute of Science & Amrutben Jivanlal College of Commerce and Economics",
-      period: "2018 - 2020",
+      degree: "Higher Secondary Certificate (HSC) in Science (Bifocal CS)",
+      institution: "K.M. Agarwarl College of Arts Commerce and Science",
+      period: "2019 - 2021",
       location: "Mumbai, India",
       achievements: [
         "Completed coursework with focus on mathematics and science fundamentals",
