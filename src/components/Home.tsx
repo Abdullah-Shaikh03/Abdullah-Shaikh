@@ -78,7 +78,7 @@ const Page = () => {
           <motion.div>
             <Button variant="ghost" size="icon" asChild>
               <Link
-                href="https://github.com/maskeynihal"
+                href="https://github.com/abdullah-shaikh03"
                 target="_blank"
                 rel="noopener noreferrer"
               >
