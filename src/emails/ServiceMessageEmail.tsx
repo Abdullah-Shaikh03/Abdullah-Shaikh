@@ -33,13 +33,17 @@ export default function ContactMessageEmail({
   siteUrl = "",
   brandName = "Portfolio",
 }: ContactMessageEmailProps) {
-  const prettyDate = new Date(submittedAt).toLocaleString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  // normalize submittedAt to a Date and handle invalid dates
+  const dateObj = new Date(submittedAt as string | number);
+  const prettyDate = isNaN(dateObj.getTime())
+    ? "Unknown"
+    : dateObj.toLocaleString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
 
   return (
     <Html>
@@ -59,7 +63,7 @@ export default function ContactMessageEmail({
           <Section style={styles.metaRow}>
             <Text style={styles.metaLabel}>From</Text>
             <Text style={styles.metaValue}>
-              {name} <span style={styles.muted}>&lt;{senderEmail}&gt;</span>
+              {name} <Text style={styles.muted}>&lt;{senderEmail}&gt;</Text>
             </Text>
           </Section>
           <Section style={styles.metaRow}>
@@ -80,7 +84,10 @@ export default function ContactMessageEmail({
           {/* Message */}
           <Section>
             <Text style={styles.blockLabel}>Message</Text>
-            <pre style={styles.message}>{message}</pre>
+            {/* Use Text with pre-wrap to preserve line breaks but avoid raw <pre> */}
+            <Text style={{ ...styles.message, display: "block", whiteSpace: "pre-wrap" }}>
+              {message}
+            </Text>
           </Section>
 
           <Hr style={styles.hr} />
@@ -188,7 +195,6 @@ const styles: Record<string, React.CSSProperties> = {
     background: "rgba(255,255,255,0.03)",
     borderRadius: 12,
     border: "1px solid rgba(255,255,255,0.08)",
-    whiteSpace: "pre-wrap",
     fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
     fontSize: 14,
     lineHeight: 1.6,

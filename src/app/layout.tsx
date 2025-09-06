@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Delius } from "next/font/google";
+import { Delius, Poiret_One, Philosopher } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/provider";
 import { Navigation } from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
-const delius = Delius({
+const philosopher = Philosopher({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-philosopher",
+});
+
+const poiretOne = Poiret_One({
   weight: "400",
   subsets: ["latin"],
 });
@@ -14,6 +20,9 @@ export const metadata: Metadata = {
   title: "Shaikh Abdullah - Full Stack AI/ML Developer",
   description:
     "Portfolio of Shaikh Abdullah, showcasing expertise in web development, machine learning, and innovative projects.",
+  icons: {
+    icon: "/favicon.ico",
+  },
   keywords: [
     "Shaikh Abdullah",
     "Full Stack Developer",
@@ -35,14 +44,6 @@ export const metadata: Metadata = {
       "Portfolio of Shaikh Abdullah, showcasing expertise in web development, machine learning, and innovative projects.",
     url: "https://abdullah-shaikh.me",
     siteName: "Shaikh Abdullah Portfolio",
-    images: [
-      {
-        url: "https://abdullah-shaikh.me/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Shaikh Abdullah Portfolio",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
@@ -54,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="h-full">
       <body
-        className={`${delius.className} min-h-screen antialiased relative flex flex-col`}
+        className={`${philosopher.className} min-h-screen antialiased relative flex flex-col`}
       >
         {/* Global background layers */}
         <div

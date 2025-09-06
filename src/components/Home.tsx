@@ -3,16 +3,13 @@ import Link from "next/link";
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  ArrowDownNarrowWideIcon,
-} from "lucide-react";
+import { Github, Linkedin, Mail, ArrowDownNarrowWideIcon } from "lucide-react";
 import About from "./about";
-
-
-
+import { Carattere } from "next/font/google";
+const carattere = Carattere({
+  weight: "400",
+  subsets: ["latin"],
+})
 
 const Page = () => {
   const downloadResume = () => {
@@ -38,7 +35,7 @@ const Page = () => {
           className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-4 space-x-8"
         >
           <span>Hi! I&apos;m</span>
-          <span className="bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent font-extrabold">
+          <span className={`${carattere.className} bg-gradient-to-r  from-primary to-foreground bg-clip-text text-transparent font-extrabold`}>
             Abdullah Shaikh
           </span>
         </motion.h1>

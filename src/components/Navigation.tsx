@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Moon, Sun, Menu } from "lucide-react";
@@ -14,6 +13,8 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
+import { Sign } from "crypto";
+import Image from "next/image";
 
 export const Navigation = () => {
   const { setTheme } = useTheme();
@@ -26,6 +27,8 @@ export const Navigation = () => {
       { name: "Experience", path: "/experience" },
       { name: "Projects", path: "/projects" },
       { name: "Education", path: "/education" },
+      { name: "Certificates", path: "/certificates" },
+      { name: "Services", path: "/services" },
       // { name: "Blog", path: "https://blogs.abdullah-shaikh.me" },
       { name: "Contact Me", path: "/contact" },
     ],
@@ -60,8 +63,14 @@ export const Navigation = () => {
         <div className="h-16 flex items-center justify-between md:grid md:grid-cols-[auto_1fr_auto]">
           {/* Left: Brand */}
           <div className="flex items-center">
-            <Link href="/" className="inline-flex items-center" aria-label="Home">
-              <span className="text-3xl font-bold text-primary tracking-wide">SA</span>
+            <Link
+              href="/"
+              className="inline-flex items-center"
+              aria-label="Home"
+            >
+              <span className="text-3xl font-extrabold text-primary tracking-wide">
+                SA
+              </span>
             </Link>
           </div>
 
@@ -71,7 +80,10 @@ export const Navigation = () => {
               const active = isLinkActive(link.path);
               const isExternal = link.path.startsWith("http");
               return (
-                <div key={link.name} className="relative flex flex-col items-center">
+                <div
+                  key={link.name}
+                  className="relative flex flex-col items-center"
+                >
                   <Link
                     href={link.path}
                     target={isExternal ? "_blank" : "_self"}
@@ -91,7 +103,11 @@ export const Navigation = () => {
                     <motion.span
                       layoutId="nav-underline"
                       className="absolute -bottom-1 h-0.5 w-[60%] rounded-md bg-primary mt-2"
-                      transition={{ type: "spring", stiffness: 600, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 600,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </div>
@@ -104,27 +120,46 @@ export const Navigation = () => {
             {/* Theme switcher */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-9 w-9" aria-label="Toggle theme">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-9 w-9"
+                  aria-label="Toggle theme"
+                >
                   <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                   <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                   <span className="sr-only">Toggle theme</span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("system")}>System</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("light")}>
+                  Light
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("dark")}>
+                  Dark
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("system")}>
+                  System
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
             {/* Mobile menu (controlled) */}
             <Sheet open={isOpen} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open menu">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="md:hidden"
+                  aria-label="Open menu"
+                >
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px] px-2">
+              <SheetContent
+                side="right"
+                className="w-[300px] sm:w-[400px] px-2"
+              >
                 <nav className="flex flex-col space-y-3 mt-6 mb-2">
                   {navigationLinks.map((link) => {
                     const active = isLinkActive(link.path);
