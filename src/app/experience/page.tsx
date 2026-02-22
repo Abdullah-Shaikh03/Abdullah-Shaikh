@@ -5,9 +5,24 @@ import { Badge } from "@/components/ui/badge";
 export default function Experience() {
   const experiences = [
     {
+      title: "Independent Consultant (Full Stack Developer)",
+      company: "Self-Employed",
+      period: "January 2024 - Present",
+      location: "",
+      achievements: [
+        "Built a performant e-commerce platform using Next.js, Express, and PostgreSQL",
+        "Set up AWS EC2/S3 infrastructure and CI/CD with GitHub Actions, cutting deployment time by 75%",
+        "Scoped requirements, negotiated deliverables, and provided post-launch support directly with clients",
+        "Led end-to-end development of custom web applications, managing timelines and client expectations",
+        "Implemented responsive design and optimized performance, resulting in a significant increase in user engagement",
+        "Utilized advanced React.js concepts including hooks, context API, and custom hooks to create dynamic and responsive user interfaces",
+        
+      ],
+    },
+    {
       title: "Full-Stack Software Engineer",
       company: "QuickSO India",
-      period: "July 2025 - Present",
+      period: "July 2025 - September 2025",
       location: "Vile Parle – Mumbai",
       achievements: [
         "Developing a CMS platform tailored for the construction industry, enabling project management, task tracking, and milestone updates",
@@ -15,17 +30,6 @@ export default function Experience() {
         "Designed and deployed the system on AWS EC2 with a React.js frontend and Strapi backend",
         "Implemented PostgreSQL as the primary database and managed version control with Git",
         "Customized CMS features to align with specific client requirements and workflows",
-      ],
-    },
-    {
-      title: "Independent Consultant (Full Stack Developer)",
-      company: "Self-Employed",
-      period: "January 2024 - December 2024",
-      location: "",
-      achievements: [
-        "Built a performant e-commerce platform using Next.js, Express, and PostgreSQL",
-        "Set up AWS EC2/S3 infrastructure and CI/CD with GitHub Actions, cutting deployment time by 75%",
-        "Scoped requirements, negotiated deliverables, and provided post-launch support directly with clients",
       ],
     },
     {
