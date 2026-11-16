@@ -1,0 +1,9 @@
+allowBuilds:
+  build: true
+permissions:
+  build:
+    skills: true
+  esbuild:
+    build: true
+overrides:
+  '@typescript-eslint/typescript-estree>minimatch': 11.0.8

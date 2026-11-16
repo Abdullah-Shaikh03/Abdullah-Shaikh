@@ -2,7 +2,7 @@
 import React from "react"
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { render } from "@react-email/render";
+import { render } from "react-email";
 import ContactMessageEmail from "@/emails/ContactMessageEmail";
 
 // Force the Node.js runtime (Nodemailer won't work on the edge runtime)

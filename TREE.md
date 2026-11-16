@@ -7,8 +7,9 @@
 ├── eslint.config.mjs
 ├── next-env.d.ts
 ├── next.config.ts
-├── package-lock.json
 ├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 ├── postcss.config.mjs
 ├── src
 │   ├── app

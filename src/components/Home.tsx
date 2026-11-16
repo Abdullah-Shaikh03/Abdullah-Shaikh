@@ -3,16 +3,11 @@ import Link from "next/link";
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  ArrowDownNarrowWideIcon,
-} from "lucide-react";
+import {Mail, ArrowDownNarrowWideIcon } from "lucide-react";
+import { FaLinkedinIn } from "@react-icons/all-files/fa/FaLinkedinIn";
+import { FaGithub } from "@react-icons/all-files/fa/FaGithub"
+
 import About from "./about";
-
-
-
 
 const Page = () => {
   const downloadResume = () => {
@@ -63,6 +58,7 @@ const Page = () => {
             <Button
               size="lg"
               className="text-base sm:text-lg px-6 sm:px-8 hover:bg-transparent border-2 border-primary hover:text-primary text-foreground"
+              asChild
             >
               <Link href={"/projects"}>Explore My Work</Link>
             </Button>
@@ -82,7 +78,7 @@ const Page = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Github className="h-5 w-5" />
+                <FaGithub className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
             </Button>
@@ -92,7 +88,7 @@ const Page = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Linkedin className="h-5 w-5" />
+                <FaLinkedinIn className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
             </Button>
